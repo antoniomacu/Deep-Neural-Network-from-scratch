@@ -4,11 +4,10 @@ This project implements a deep neural network from scratch in Python using only 
 
 ## About
 
-The notebook and accompanying scripts demonstrate:
-- The full workflow for building, training, and evaluating a deep neural network
-- Implementation of forward and backward propagation, parameter updates, and cost calculation manually (without high-level libraries)
-- Application to the breast cancer classification dataset
-- Code structure and workflow inspired by the DeepLearning.AI course, with my own experimentation and exploration
+The pourpose of the project was to challenge myself on implementing a neural network, applying it to an interesting dataset different from the one used in the course and mantain the workflow using **git**.
+
+- In `nn_functions.py` you cand find all the functions that implement forward and backward propagation for a binary classification task using **ReLU** and **Sigmoid** as activations (this was clearly inspired by the material of the course).
+- The notebook (.ipynb) includes a small but fun application and test of the NN, using the **Breast Cancer Wisconsin Dataset** from [UCI Repository](https://archive.ics.uci.edu/dataset/17/breast+cancer+wisconsin+diagnostic) that includes data from 569 patients with tumors that were either bening or malignant.
 
 ## Acknowledgements
 
