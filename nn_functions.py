@@ -169,7 +169,7 @@ def forward_prop(X, parameters):
 # 7. Implementation of the binary cross entropy cost function (log loss) - for binary classification the Logistic Regression Cost Function is used:
 #    J(W,b) =  -1/m  * summatory(Y * log(A) + (1 - Y) * log(1 - A))
 
-def cost(AL, Y):
+def cost_function(AL, Y):
     """
     Arguments:
     AL -- probability vector corresponding to label predictions, shape (1, number of examples)
