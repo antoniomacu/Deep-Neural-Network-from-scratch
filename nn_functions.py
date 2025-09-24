@@ -161,7 +161,7 @@ def forward_prop(X, parameters):
     # Implement the L layer: Linear -> Sigmoid
     AL, cache = linear_activation_forward(A, parameters['W'+str(L)], parameters['b'+str(L)], activation="sigmoid")
     caches.append(cache)
-    # YOUR CODE ENDS HERE
+    
           
     return AL, caches
 
@@ -288,7 +288,7 @@ def backward_prop(AL, Y, caches):
     """
     Arguments:
     AL -- probability vector, output of the forward propagation (L_model_forward())
-    Y -- true "label" vector (containing 0 if non-cat, 1 if cat)
+    Y -- true "label" vector (0, 1 - binary variable)
     caches -- list of caches containing:
                 every cache of linear_activation_forward() with "relu" (it's caches[l], for l in range(L-1) i.e l = 0...L-2)
                 the cache of linear_activation_forward() with "sigmoid" (it's caches[L-1])
@@ -348,3 +348,31 @@ def update_parameters(params, grads, learning_rate):
         parameters["b" + str(l+1)] = params['b' + str(l+1)] - learning_rate * grads["db" + str(l+1)]
         
     return parameters
+
+
+# 13. Implement prediction function to compute the predictions and accuracy of the model.
+#     This is done by doing a last forward propagation in the last parameters obtained 
+#     after gradient descent
+
+def predict(X, Y, parameters):
+    """
+    Predict using the learned parameters and return accuracy.
+    Arguments:
+    X -- input data, shape (features, samples)
+    Y -- true labels, shape (1, samples)
+    parameters -- learned parameters from training
+
+    Returns:
+    predictions -- binary predictions (0/1)
+    accuracy -- percentage of correct predictions
+    """
+    # Use standard forward propagation (no dropout) for predictions
+    AL, _ = forward_prop(X, parameters)
+
+    # Convert probabilities to binary predictions (0/1)
+    predictions = (AL > 0.5).astype(int)
+
+    # Compute accuracy
+    accuracy = np.mean(predictions == Y) * 100
+
+    return predictions, accuracy
